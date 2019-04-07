@@ -13,11 +13,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include
-        android:id="@+id/include2"
-        layout="@layout/content_void" />
-
-
+    <include layout="@layout/content_void" />
 
 
 </android.support.design.widget.CoordinatorLayout>
