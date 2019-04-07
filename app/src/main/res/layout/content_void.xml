@@ -29,7 +29,7 @@
         android:text="Exit"
         android:textColor="#8c9abe"
         android:textSize="32dp"
-        tools:fontFamily="@font/caesar_dressing" />
+        android:fontFamily="@font/caesar_dressing" />
 
     <TextView
         android:layout_width="match_parent"
