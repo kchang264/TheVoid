@@ -11,10 +11,12 @@
     tools:context=".VoidActivity"
     tools:showIn="@layout/activity_void">
 
-    <TextView
+    <ImageView
+        android:id="@+id/vortexImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="8"/>
+        android:layout_weight="8"
+        android:src = "@drawable/vortex"/>
 
     <Button
         android:id="@+id/exitButton"
