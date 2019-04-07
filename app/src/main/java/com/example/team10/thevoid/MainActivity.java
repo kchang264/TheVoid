@@ -7,6 +7,7 @@ import android.graphics.Shader;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextPaint;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,16 +23,17 @@ import ai.api.model.Result;
 import ai.api.android.AIConfiguration;
 import com.google.gson.JsonElement;
 import java.util.Map;
-
+import ai.api.android.AIService;
 
 
 public class MainActivity extends AppCompatActivity implements AIListener {
-
+    AIService aiService;
+    TextView t;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        t = (TextView) findViewById(R.id.titleTextView);
         Button enterVoid = findViewById( R.id.enterButton );
         enterVoid.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,11 +42,16 @@ public class MainActivity extends AppCompatActivity implements AIListener {
             }
         });
 
-        final AIConfiguration config = new AIConfiguration("CLIENT_ACCESS_TOKEN",
+        final AIConfiguration config = new AIConfiguration("a607b2db7c04498da7670ea3c1c9c99a",
                 AIConfiguration.SupportedLanguages.English,
                 AIConfiguration.RecognitionEngine.System);
+        AIService aiService = AIService.getService(this, config);
+        aiService.setListener(this);
     }
 
+    public void buttonClicked(View view){
+        aiService.startListening();
+    }
     /**
      * Launches new activity
      */
@@ -60,7 +67,9 @@ public class MainActivity extends AppCompatActivity implements AIListener {
      */
     @Override
     public void onResult(AIResponse result) {
-
+        Log.d("anu", result.toString());
+        Result result1 = result.getResult();
+        t.setText(result1.getResolvedQuery()+"action: "+ result1.getAction());
     }
 
     /**

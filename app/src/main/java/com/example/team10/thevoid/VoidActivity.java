@@ -13,12 +13,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+
 public class VoidActivity extends AppCompatActivity {
     LinearLayout layout;
     AnimationDrawable animationDrawable;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_void);
 
